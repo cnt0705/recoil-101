@@ -1,8 +1,8 @@
 import { RecoilRoot } from 'recoil'
-import { CharacterCounter } from './CharacterCounter'
+import { TodoList } from './components/TodoList'
 
 export const App = () => (
   <RecoilRoot>
-    <CharacterCounter />
+    <TodoList />
   </RecoilRoot>
 )
