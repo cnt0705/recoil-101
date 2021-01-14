@@ -1,15 +1,7 @@
-import { atom, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
+
 import { TodoItemCreator } from './TodoItemCreator'
-
-type TodoItem = {
-  id: string
-  text: string
-}
-
-const todoListState = atom<TodoItem[]>({
-  key: 'todoListState',
-  default: [],
-})
+import { todoListState } from '../state'
 
 export const TodoList = () => {
   const todoList = useRecoilValue(todoListState)
