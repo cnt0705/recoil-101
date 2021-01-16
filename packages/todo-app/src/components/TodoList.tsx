@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil'
 
+import { TodoItem } from './TodoItem'
 import { TodoItemCreator } from './TodoItemCreator'
 import { todoListState } from '../state'
 
@@ -9,11 +10,10 @@ export const TodoList = () => {
   return (
     <>
       <TodoItemCreator />
-      {console.log(todoList)}
 
-      {/* {todoList.map(todoItem => (
+      {todoList.map(todoItem => (
         <TodoItem key={todoItem.id} item={todoItem} />
-      ))} */}
+      ))}
     </>
   )
 }

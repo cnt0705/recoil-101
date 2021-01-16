@@ -1,11 +1,7 @@
 import { atom } from 'recoil'
+import { TodoItemType } from '../types'
 
-type TodoItem = {
-  id: string
-  text: string
-}
-
-export const todoListState = atom<TodoItem[]>({
+export const todoListState = atom<TodoItemType[]>({
   key: 'todoListState',
   default: [],
 })
