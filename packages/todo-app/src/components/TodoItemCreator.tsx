@@ -1,21 +1,12 @@
 import { useState } from 'react'
-import { useSetRecoilState } from 'recoil'
-
-import { todoListState } from '../state'
+import { useTodoList } from '../hooks/todo'
 
 export const TodoItemCreator = () => {
   const [inputValue, setInputValue] = useState('')
-  const setTodoList = useSetRecoilState(todoListState)
+  const { addTodo } = useTodoList()
 
   const addItem = () => {
-    setTodoList(oldTodoList => [
-      ...oldTodoList,
-      {
-        id: Math.random().toString(),
-        text: inputValue,
-        isComplete: false,
-      },
-    ])
+    addTodo(inputValue)
     setInputValue('')
   }
 

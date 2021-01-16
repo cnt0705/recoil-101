@@ -1,14 +1,12 @@
-import { useRecoilValue } from 'recoil'
-
 import { TodoItem } from './TodoItem'
 import { TodoItemCreator } from './TodoItemCreator'
 import { TodoListFilters } from './TodoListFilters'
 import { TodoListStats } from './TodoListStats'
 
-import { filteredTodoListState } from '../state'
+import { useTodoList } from '../hooks/todo'
 
 export const TodoList = () => {
-  const todoList = useRecoilValue(filteredTodoListState)
+  const { filteredTodoList } = useTodoList()
 
   return (
     <div className="p-5">
@@ -16,7 +14,7 @@ export const TodoList = () => {
       <TodoListFilters />
       <TodoItemCreator />
 
-      {todoList.map(todoItem => (
+      {filteredTodoList.map(todoItem => (
         <TodoItem key={todoItem.id} item={todoItem} />
       ))}
     </div>

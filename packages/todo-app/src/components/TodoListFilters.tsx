@@ -1,8 +1,7 @@
-import { useRecoilState } from 'recoil'
-import { todoListFilterState } from '../state'
+import { useTodoFilter } from '../hooks/todo'
 
 export const TodoListFilters = () => {
-  const [filter, setFilter] = useRecoilState(todoListFilterState)
+  const { filter, setFilter } = useTodoFilter()
 
   const updateFileter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(e.target.value)

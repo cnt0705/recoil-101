@@ -1,5 +1,4 @@
-import { useRecoilValue } from 'recoil'
-import { todoListStatsState } from '../state'
+import { useTodoStats } from '../hooks/todo'
 
 export const TodoListStats = () => {
   const {
@@ -7,7 +6,7 @@ export const TodoListStats = () => {
     totalCompletedNum,
     totalUncompletedNum,
     percentCompleted,
-  } = useRecoilValue(todoListStatsState)
+  } = useTodoStats()
 
   const formattedPercentCompleted = Math.round(percentCompleted)
 

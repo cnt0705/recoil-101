@@ -1,73 +1,28 @@
-import { useRecoilState } from 'recoil'
-import { todoListState } from '../state'
 import { TodoItemType } from '../types'
+import { useTodoList } from '../hooks/todo'
 
 type Props = {
   item: TodoItemType
 }
 
-type ReplaceItemHandler = (
-  items: TodoItemType[],
-  index: number,
-  item: TodoItemType
-) => TodoItemType[]
-
-type RemoveItemHandler = (
-  items: TodoItemType[],
-  index: number
-) => TodoItemType[]
-
-const replaceItemAtIndex: ReplaceItemHandler = (arr, index, newValue) => [
-  ...arr.slice(0, index),
-  newValue,
-  ...arr.slice(index + 1),
-]
-
-const removeItemAtIndex: RemoveItemHandler = (arr, index) => [
-  ...arr.slice(0, index),
-  ...arr.slice(index + 1),
-]
-
 export const TodoItem: React.FC<Props> = ({ item }) => {
-  const [todoList, setTodoList] = useRecoilState(todoListState)
-  const index = todoList.findIndex(ListItem => ListItem === item)
-
-  const editItemText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newList = replaceItemAtIndex(todoList, index, {
-      ...item,
-      text: e.target.value,
-    })
-    setTodoList(newList)
-  }
-
-  const toggleItemCompletion = () => {
-    const newList = replaceItemAtIndex(todoList, index, {
-      ...item,
-      isComplete: !item.isComplete,
-    })
-    setTodoList(newList)
-  }
-
-  const deleteItem = () => {
-    const newList = removeItemAtIndex(todoList, index)
-    setTodoList(newList)
-  }
+  const { editItemText, deleteItem, toggleItemCompletion } = useTodoList()
 
   return (
     <div className="mb-2">
       <input
         type="text"
         value={item.text}
-        onChange={editItemText}
+        onChange={e => editItemText(e.target.value, item)}
         className="mr-2 p-2 border-2 border-gray-300 rounded"
       />
       <input
         type="checkbox"
         checked={item.isComplete}
-        onChange={toggleItemCompletion}
+        onChange={() => toggleItemCompletion(item)}
         className="mr-2"
       />
-      <button onClick={deleteItem}>X</button>
+      <button onClick={() => deleteItem(item)}>X</button>
     </div>
   )
 }
