@@ -12,7 +12,7 @@ export const TodoListStats = () => {
   const formattedPercentCompleted = Math.round(percentCompleted)
 
   return (
-    <ul>
+    <ul className="mb-5">
       <li>Total items: {totalNum}</li>
       <li>Items completed: {totalCompletedNum}</li>
       <li>Items not completed: {totalUncompletedNum}</li>

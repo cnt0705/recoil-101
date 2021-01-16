@@ -24,9 +24,16 @@ export const TodoItemCreator = () => {
   }
 
   return (
-    <div>
-      <input type="text" value={inputValue} onChange={onChange} />
-      <button onClick={addItem}>Add</button>
+    <div className="mb-5">
+      <input
+        type="text"
+        value={inputValue}
+        onChange={onChange}
+        className="mr-2 p-2 border-2 border-gray-300 rounded"
+      />
+      <button onClick={addItem} className="p-2 bg-green-500 text-white rounded">
+        Add
+      </button>
     </div>
   )
 }

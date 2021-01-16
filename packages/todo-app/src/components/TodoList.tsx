@@ -11,7 +11,7 @@ export const TodoList = () => {
   const todoList = useRecoilValue(filteredTodoListState)
 
   return (
-    <>
+    <div className="p-5">
       <TodoListStats />
       <TodoListFilters />
       <TodoItemCreator />
@@ -19,6 +19,6 @@ export const TodoList = () => {
       {todoList.map(todoItem => (
         <TodoItem key={todoItem.id} item={todoItem} />
       ))}
-    </>
+    </div>
   )
 }

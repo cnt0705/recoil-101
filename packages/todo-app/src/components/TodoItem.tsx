@@ -54,12 +54,18 @@ export const TodoItem: React.FC<Props> = ({ item }) => {
   }
 
   return (
-    <div>
-      <input type="text" value={item.text} onChange={editItemText} />
+    <div className="mb-2">
+      <input
+        type="text"
+        value={item.text}
+        onChange={editItemText}
+        className="mr-2 p-2 border-2 border-gray-300 rounded"
+      />
       <input
         type="checkbox"
         checked={item.isComplete}
         onChange={toggleItemCompletion}
+        className="mr-2"
       />
       <button onClick={deleteItem}>X</button>
     </div>
