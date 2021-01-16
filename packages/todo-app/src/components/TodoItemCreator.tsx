@@ -10,7 +10,11 @@ export const TodoItemCreator = () => {
   const addItem = () => {
     setTodoList(oldTodoList => [
       ...oldTodoList,
-      { id: Math.random().toString(), text: inputValue },
+      {
+        id: Math.random().toString(),
+        text: inputValue,
+        isComplete: false,
+      },
     ])
     setInputValue('')
   }
